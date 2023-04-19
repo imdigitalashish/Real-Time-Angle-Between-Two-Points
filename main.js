@@ -43,7 +43,23 @@ class AngleFinder {
                 this.values.tan = Math.tan(calc.radians)
                 console.log(this.values);
             }
-        })
+        });
+
+        document.ontouchstart = (evt) =>{
+            if(this.point1  == null) {
+                this.point1 = {x: evt.touches[0].clientX, y: evt.touches[0].clientY};
+            } else if (this.poin2 == null) {
+                this.poin2 = {x: evt.touches[0].clientX, y: evt.touches[0].clientY};
+                console.log(this.calculateAngle(this.point1, this.poin2))
+                let calc = this.calculateAngle(this.point1, this.poin2);
+                this.values.angle = calc.degree;
+                this.values.rad = calc.radians;
+                this.values.cos = Math.cos(calc.radians)
+                this.values.sin = Math.sin(calc.radians)
+                this.values.tan = Math.tan(calc.radians)
+                console.log(this.values);
+            }
+        }
     }
 
 
