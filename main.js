@@ -71,14 +71,14 @@ class AngleFinder {
         sin: 0,
         cos: 0,
         tan: 0,
-        height: 0,
+//         height: 0,
     }
 
     calculateAngle(point1, point2) {
         let angleRadians = Math.atan2(point2.y - point1.y, point2.x - point1.x);
         let angleDegrees = Math.round(angleRadians * 180 / Math.PI);
         console.log(point1.y - point2.y);
-        return { degree: 180 - angleDegrees, radians: angleDegrees * (Math.PI / 180) };
+        return { degree: 180 - angleDegrees, radians: (180 - angleDegrees) * (Math.PI / 180) };
     }
 
     render(ts) {
