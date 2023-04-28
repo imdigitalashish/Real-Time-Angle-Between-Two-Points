@@ -5,7 +5,6 @@ class AngleFinder {
 
         this.canvas = document.querySelector("canvas");
         this.ctx = this.canvas.getContext('2d');
-<<<<<<< HEAD
         navigator.mediaDevices.getUserMedia(
             {
                 video: {
@@ -16,12 +15,6 @@ class AngleFinder {
         .then(stream=>{
             document.querySelector("video").srcObject = stream;
             document.querySelector("video").play();
-=======
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(stream => {
-                document.querySelector("video").srcObject = stream;
-                document.querySelector("video").play();
->>>>>>> 6f80c9da58569e40c6bcd9077b1456ca43b47d51
 
             })
 
