@@ -5,7 +5,13 @@ class AngleFinder {
 
         this.canvas = document.querySelector("canvas");
         this.ctx = this.canvas.getContext('2d');
-        navigator.mediaDevices.getUserMedia({video: true})
+        navigator.mediaDevices.getUserMedia(
+            {
+                video: {
+                    facingMode: "environment"
+                }
+            }
+        )
         .then(stream=>{
             document.querySelector("video").srcObject = stream;
             document.querySelector("video").play();
