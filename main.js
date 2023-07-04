@@ -143,7 +143,7 @@ class AngleFinder {
             
             this.ctx.font = "30px Arial";
             this.ctx.fillStyle = "white";
-            this.ctx.fillText(pythagorasTheo(height, parseInt(document.querySelector("#horizontalDistance").value)), (this.poin2.x + this.point1.x)/2, (this.poin2.y + this.point2.y)/2 - 20);
+            this.ctx.fillText(this.pythagorasTheo(height, parseInt(document.querySelector("#horizontalDistance").value)), (this.poin2.x + this.point1.x)/2, (this.poin2.y + this.point2.y)/2 - 20);
 
         }
 
