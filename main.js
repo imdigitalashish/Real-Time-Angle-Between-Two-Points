@@ -35,7 +35,7 @@ class AngleFinder {
 
 
     registerEvent() {
-        document.addEventListener("mousedown", (event) => {
+        this.canvas.addEventListener("mousedown", (event) => {
             if (this.point1 == null) {
                 this.point1 = { x: event.x, y: event.y };
             } else if (this.poin2 == null) {
@@ -63,7 +63,7 @@ class AngleFinder {
                 this.values.cos = -Math.cos(calc.radians)
                 this.values.sin = Math.sin(calc.radians)
                 this.values.tan = -Math.tan(calc.radians)
-                this.values.height = Math.tan(this.values.angle * Math.PI / 180) * 20 + 3
+                this.values.height = Math.tan(this.values.angle * Math.PI / 180) * parseInt(document.querySelector("#horizontalDistance").value) + parseInt(document.querySelector("#heightThreshold").value)
 
                 console.log(this.values);
             }
@@ -87,6 +87,10 @@ class AngleFinder {
         return { degree: 180 - angleDegrees, radians: (180 - angleDegrees) * (Math.PI / 180) };
     }
 
+    pythagorasTheo(height, base){
+        return Math.sqrt(Math.pow(height, 2) + Math.pow(base, 2))
+    }
+
     render(ts) {
 
         this.ctx.drawImage(document.querySelector("video"), 0, 0, this.canvas.width, this.canvas.height);
@@ -98,6 +102,9 @@ class AngleFinder {
         }
 
         if (this.poin2 != null) {
+
+            let height = Math.tan(window.game.values.angle
+                * Math.PI / 180) * parseInt(document.querySelector("#horizontalDistance").value) + parseInt(document.querySelector("#heightThreshold").value);
             this.ctx.fillStyle = "blue";
             this.ctx.fillRect(this.poin2.x, this.poin2.y, 20, 20);
 
@@ -131,8 +138,12 @@ class AngleFinder {
 
             this.ctx.font = "30px Arial";
             this.ctx.fillStyle = "white";
-            this.ctx.fillText(Math.tan(window.game.values.angle
-                * Math.PI / 180) * 20 + 3, this.point1.x, this.poin2.y);
+            this.ctx.fillText(height, this.point1.x, this.poin2.y);
+// HEIGHT AND THRESHOLD CODE HERE
+            
+            this.ctx.font = "30px Arial";
+            this.ctx.fillStyle = "white";
+            this.ctx.fillText(pythagorasTheo(height, parseInt(document.querySelector("#horizontalDistance").value)), (this.poin2.x + this.point1.x)/2, (this.poin2.y + this.point2.y)/2 - 20);
 
         }
 
