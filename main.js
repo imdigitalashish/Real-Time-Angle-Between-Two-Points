@@ -88,7 +88,7 @@ class AngleFinder {
     }
 
     pythagorasTheo(height, base){
-        return Math.sqrt(Math.pow(height, 2) + Math.pow(base, 2))
+        return parseFloat(Math.sqrt(Math.pow(height, 2) + Math.pow(base, 2))).toFixed(2)
     }
 
     render(ts) {
@@ -138,7 +138,7 @@ class AngleFinder {
 
             this.ctx.font = "30px Arial";
             this.ctx.fillStyle = "white";
-            this.ctx.fillText(height, this.point1.x, this.poin2.y);
+            this.ctx.fillText(parseFloat(height).toFixed(2), this.point1.x, this.poin2.y);
 // HEIGHT AND THRESHOLD CODE HERE
             
             this.ctx.font = "30px Arial";
